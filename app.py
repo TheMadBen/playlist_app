@@ -14,12 +14,12 @@ def account():
 @app.route('/user-login')
 # this is for the form action where the user enters their login info and clicks 'Login'
 def user_login():
-    return render_template('base.html')
+    return render_template('playlist.html')
 
 @app.route('/playlist')
 # this is for the general use of navigating back and forth from playlist page once user has already logged in
 def playlist():
-    return render_template('base.html')
+    return render_template('playlist.html')
 
 @app.route('/search')
 def search():

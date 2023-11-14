@@ -1,13 +1,12 @@
-{% extends "templates/base.html" %}
+{% extends "base.html" %}
+
 {% block title %} Playlist {% endblock %}
 
 {% block content %}
-<!--<link rel="stylesheet" type= "text/css" href= "{{ url_for('static', filename='styles/playlist.css') }}">-->
-<div class='container'>
-
+<link rel="stylesheet" type= "text/css" href= "{{ url_for('static', filename='styles/playlist.css') }}"
+<div>
     <p>
         This is playlist page
     </p>
-    
 </div>
 {% endblock %}

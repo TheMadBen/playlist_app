@@ -1,21 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Search</title>
-        <link rel="stylesheet" type= "text/css" href= "{{ url_for('static', filename='styles/search.css') }}">
-    </head>
-    <body>
-        <div class='container'>
+{% extends "base.html" %}
 
-            <p>
-                This is search page
-            </p>
+{% block title %} Search {% endblock %}
 
-            <p class='playlist-redirect'>
-                <a href="{{ url_for('playlist') }}">Back to playlist</a>
-            </p>
-            
-        </div>
-    </body>
-</html>
+{% block content %}
+<link rel="stylesheet" type= "text/css" href= "{{ url_for('static', filename='styles/search.css') }}">
+<div class='container'>
+    <p>
+        This is search page
+    </p>    
+</div>
+{% endblock %}
