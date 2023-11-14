@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Create Account</title>
+        <link rel="stylesheet" type= "text/css" href= "{{ url_for('static', filename='styles/account.css') }}">
+    </head>
+    <body>
+        <div class='container'>
+            <form action='/account-created'>
+                <label>Enter First Name:</label>
+                <input type='text' id='fname' placeholder='First Name' Required><br>
+                <label>Enter Last Name:</label>
+                <input type='text' id='lname' placeholder='Last Name' Required><br>
+                <label>Enter Username:</label>
+                <input type='text' id='username' placeholder='Username' Required><br>
+                <label>Enter Password:</label>
+                <input type='text' id='password' placeholder='Password' Required><br>
+                <button type='submit'>Create</button>
+            </form>
+        </div>
+    </body>
+</html>

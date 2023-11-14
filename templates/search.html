@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Search</title>
+        <link rel="stylesheet" type= "text/css" href= "{{ url_for('static', filename='styles/search.css') }}">
+    </head>
+    <body>
+        <div class='container'>
+
+            <p>
+                This is search page
+            </p>
+
+            <p class='playlist-redirect'>
+                <a href="{{ url_for('playlist') }}">Back to playlist</a>
+            </p>
+            
+        </div>
+    </body>
+</html>

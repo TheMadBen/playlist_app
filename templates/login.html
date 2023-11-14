@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Login Page</title>
+        <link rel="stylesheet" type= "text/css" href= "{{ url_for('static', filename='styles/login.css') }}">
+    </head>
+    <body>
+        <div class='container'>
+            <form action='/user-login'>
+                <label>Enter Username:</label>
+                <input type='text' id='username' placeholder='Username' Required><br>
+                <label>Enter Password:</label>
+                <input type='text' id='password' placeholder='Password' Required><br>
+                <input type="submit" value="Login">
+            </form>
+
+            <p class='account-redirect'>
+                <a href="{{ url_for('account') }}">Create Account</a>
+            </p>
+            
+        </div>
+    </body>
+</html>

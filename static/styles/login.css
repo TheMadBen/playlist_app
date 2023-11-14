@@ -1,0 +1,51 @@
+div.container {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Style inputs */
+input[type=text], select {
+    width: 300px;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+  
+/* Style the submit button */
+input[type=submit] {
+    width: 100px;
+    background-color: white;
+    color: black;
+    border: 1px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px
+}
+
+input[type=submit]:hover {
+    background-color: grey;
+}
+
+.account-redirect {
+    padding-top: 100px;
+}
+
+a {
+    color: black;
+}
+
+a:link, a:visited {
+    background-color: white;
+    color: black;
+    border: 2px solid black;
+    border-radius: 20px;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
