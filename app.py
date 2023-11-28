@@ -86,10 +86,28 @@ def user_login():
             return 'Login Failed'
     return render_template('login.html')
 
-@app.route('/playlist')
+
 # this is for the general use of navigating back and forth from playlist page once user has already logged in
+@app.route('/playlist', methods=['POST'])
 def playlist():
-    return render_template('playlist.html')
+    user_id = 0  # Replace with the actual logged-in user's ID
+    playlist_name = request.form['playlist_name']
+
+    conn = get_db_connection()
+    cur = conn.cursor()
+
+    cur.execute("INSERT INTO playlist (user_id, playlist_name) VALUES (%s, %s) RETURNING playlist_name", (user_id, playlist_name))
+    playlist_id = cur.fetchone()[0]
+
+    cur.execute("SELECT * FROM playlist WHERE playlist_name = %s", (playlist_id,))
+    new_playlist = cur.fetchone()
+
+    conn.commit()
+    cur.close()
+    conn.close()
+
+    return render_template('playlist.html', playlist=new_playlist)
+
 
 @app.route('/search')
 def search():
