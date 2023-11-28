@@ -1,12 +1,33 @@
-{% extends "base.html" %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/search.css') }}">
+</head>
+<body>
+    <div class="search-container">
+        <input type="text" id="search-input" class="search-input" placeholder="Search for Artists, Songs, or Albums" autofocus>
+        <button id="search-button" class="search-button">Search</button>
+    </div>
+    <div id="search-results" class="search-results">
+    </div>
 
-{% block title %} Search {% endblock %}
+    <div class="sidebar">
+        <div class="menu">
+            <p><a class="menu-item">Library</a></p>
+            <p><a href="{{ url_for('playlist') }}" class="menu-item">Playlist</a></p>
+            <p><a href="{{ url_for('search') }}" class="menu-item">Search</a></p>
+            <p><a class="menu-item">Account</a></p>
+        </div>
+    </div>
 
-{% block content %}
-<link rel="stylesheet" type= "text/css" href= "{{ url_for('static', filename='styles/search.css') }}">
-<div class='container'>
-    <p>
-        This is search page
-    </p>    
-</div>
-{% endblock %}
+    <script>
+        document.getElementById('search-button').addEventListener('click', function() {
+            var searchTerm = document.getElementById('search-input').value;
+            console.log('Search for:', searchTerm);
+        });
+    </script>
+</body>
+</html>
