@@ -17,17 +17,26 @@
     </div>
     <div class="content">
         <div class="playlist-header">
-            <div class="playlist-details">
-                <h1>Playlist</h1>
-            </div>
-        </div>
-        <div class="song-list">
-            <div class="song">
-                <div class="song-number">#</div>
-                <div class="song-title">Song Title</div>
-                <div class="song-album">Album</div>
-            </div>
+        <div class="playlist-details">
+            <h1>Playlist</h1>
         </div>
     </div>
+    <div class="song-list">
+        {% if playlist %}
+            <div class="playlist">
+                <h2>{{ playlist[2] }}</h2> <!-- Displaying the playlist name -->
+                <!-- More code here to display playlist songs if available -->
+            </div>
+        {% else %}
+            <p>No playlists available.</p>
+        {% endif %}
+    </div>
+    </div>
+    <div class="create-playlist">
+        <form action="{{ url_for('playlist') }}" method="post">
+            <input type="text" name="playlist_name" placeholder="Enter Playlist Name" required>
+            <button type="submit">Create Playlist</button>
+        </form>
+    </div>    
 </body>
 </html>

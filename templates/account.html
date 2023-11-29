@@ -7,15 +7,11 @@
     </head>
     <body>
         <div class='container'>
-            <form action='/account-created'>
-                <label>Enter First Name:</label>
-                <input type='text' id='fname' placeholder='First Name' Required><br>
-                <label>Enter Last Name:</label>
-                <input type='text' id='lname' placeholder='Last Name' Required><br>
+            <form action='/account-created' method="post">
                 <label>Enter Username:</label>
-                <input type='text' id='username' placeholder='Username' Required><br>
+                <input type='text' name='username' placeholder='Username' Required><br>
                 <label>Enter Password:</label>
-                <input type='text' id='password' placeholder='Password' Required><br>
+                <input type='text' name='password' placeholder='Password' Required><br>
                 <button type='submit'>Create</button>
             </form>
         </div>
