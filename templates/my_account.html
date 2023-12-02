@@ -15,8 +15,19 @@
         </div>
     </div>
     <div class='right-side'>
-        <p>
-            This is where user information will go such as username, password, and a logout option
+        <h1 class='header'>
+            User Information
+        </h1>
+        <div class='user-info'>
+            <p class='username'>
+                Username: {{ username }}
+            </p>
+            <p class='password'>
+                Password: {{ password }}
+            </p>
+        </div>
+        <p class='logout'>
+            <a href="{{ url_for('user_login') }}">Logout</a>
         </p>
     </div>
 </body>

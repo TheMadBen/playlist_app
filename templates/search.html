@@ -17,21 +17,25 @@
 
     <div class="right-side">
         <div class="search-container">
-            <input type="text" id="search-input" class="search-input" placeholder="Search for Artists, Songs, or Albums" autofocus>
-            <button id="search-button" class="search-button">Search</button>
+            <form action="/search" method="post">
+                <input type='text' name='song' placeholder='Song Name' Required><br>
+                <input type='text' name='playlist' placeholder='Playlist' Required><br>
+                <input type="submit" value="Add">
+            </form>
         </div>
     
-        <div id="search-results" class="search-results">
-            <p>This is where the search results go</p>
+        <div class="song-list">
+            <h1 class='header'>
+                Songs List
+            </h1>
+            <p class='song-items'>
+                {% for song, artist, genre in songs_list %}
+                Song: {{ song }} <br>
+                Artist: {{ artist }} <br>
+                Genre: {{ genre }} <br><br>
+                {% endfor %}
+            </p>
         </div>
     </div>
-
-
-    <script>
-        document.getElementById('search-button').addEventListener('click', function() {
-            var searchTerm = document.getElementById('search-input').value;
-            console.log('Search for:', searchTerm);
-        });
-    </script>
 </body>
 </html>

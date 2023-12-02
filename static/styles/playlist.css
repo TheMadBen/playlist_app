@@ -45,7 +45,7 @@ body {
 .playlist-header {
     display: flex;
     align-items: center;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
 }
 
 .playlist-details h1 {

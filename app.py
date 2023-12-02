@@ -53,7 +53,8 @@ def get_db_connection():
 
 
 # testing to see how well using a global user variable works
-user = None
+username = None
+password = None
 
 app = Flask(__name__, template_folder='templates')
 
@@ -63,7 +64,8 @@ def index():
 
 @app.route('/user-login', methods=['GET', 'POST'])
 def user_login():
-    global user
+    global username
+    global password
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
@@ -72,7 +74,8 @@ def user_login():
         cur.execute("SELECT * FROM users WHERE username = %s AND password = %s",
                     (username, password))
         user = cur.fetchone()   # user is a tuple ie (0, 'user0', 'pass0')
-        print(user[1])
+        username = user[1]  # 1 is the user name in the tuple
+        password = user[2]  # this grabs the password within the tuple
         cur.close()
         conn.close()
         if user:
@@ -108,9 +111,9 @@ def create_account():
 # this is for the general use of navigating back and forth from playlist page once user has already logged in
 @app.route('/playlist', methods=['GET', 'POST'])
 def playlist():
-    global user
-    user_id = user  # Replace with the actual logged-in user's ID
-    print(user[1])
+    global username
+    user_id = username  # Replace with the actual logged-in user's ID
+    print(user_id)
     # playlist_name = request.form['playlist_name']
 
     # conn = get_db_connection()
@@ -129,14 +132,52 @@ def playlist():
     return render_template('playlist.html')
 
 
-@app.route('/search')
+@app.route('/search', methods=['GET', 'POST'])
 def search():
-    return render_template('search.html')
+    global username
+    songs_list = ()
+    
+    # display all songs upon loading up the page
+    conn = get_db_connection()
+    cur = conn.cursor()
+    
+    cur.execute("SELECT * FROM songs_list")
+    songs_list = cur.fetchall()
+    # print(songs_list)
+    
+    conn.commit()
+    cur.close()
+    conn.close()
+    
+    if request.method == 'POST':
+        # get user submitted song name and playlist
+        song = request.form['song']
+        playlist = request.form['playlist']
+        
+        # now add to database specifying user, song, and playlist
+        conn = get_db_connection()
+        cur = conn.cursor()
+
+        # first we want to add to the song table the song that was chosen that references the playlist name
+        # randomly generate the other columns - song_id, num_listens, and album_id
+        song_id = random.randint(11, 10000)
+        num_listens = random.randint(1, 1000000)
+        album_id = random.randint(11, 100000)
+        
+        cur.execute("INSERT INTO song (song_id, song_name, num_listens, album_id, playlist_name) VALUES (%s,%s,%s,%s,%s)", 
+                    (song_id, song, num_listens, album_id, playlist))
+
+        conn.commit()
+        cur.close()
+        conn.close()
+    
+    return render_template('search.html', songs_list=songs_list)
 
 @app.route('/my_account', methods=['GET', 'POST'])
 def my_account():
-
-    return render_template('my_account.html')
+    global username
+    global password
+    return render_template('my_account.html', username=username, password=password) # render username and password upon loeading this page
 
 
 if __name__ == "__main__":
