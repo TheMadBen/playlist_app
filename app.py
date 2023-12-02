@@ -62,6 +62,7 @@ def index():
 
 @app.route('/user-login', methods=['GET', 'POST'])
 def user_login():
+    global user
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
@@ -70,7 +71,7 @@ def user_login():
         cur.execute("SELECT * FROM users WHERE username = %s AND password = %s",
                     (username, password))
         user = cur.fetchone()   # user is a tuple ie (0, 'user0', 'pass0')
-        # print(user)
+        print(user[1])
         cur.close()
         conn.close()
         if user:
@@ -106,8 +107,9 @@ def create_account():
 # this is for the general use of navigating back and forth from playlist page once user has already logged in
 @app.route('/playlist', methods=['GET', 'POST'])
 def playlist():
-    user_id = 0  # Replace with the actual logged-in user's ID
-    # print(user_id)
+    global user
+    user_id = user  # Replace with the actual logged-in user's ID
+    print(user[1])
     # playlist_name = request.form['playlist_name']
 
     # conn = get_db_connection()
