@@ -1,4 +1,5 @@
 body {
+    display: flex;
     font-family: Arial, sans-serif;
     background-color: #181818; 
     color: #fff;
@@ -10,11 +11,8 @@ body {
     background-color: #2c3e50;
     color: white;
     padding: 20px;
-    min-height: 100vh;
-    width: 230px; 
-    position: fixed; 
-    left: 0;
-    top: 0;
+    height: 1000vh;
+    width: 230px;
 }
 
 .menu p {
@@ -34,23 +32,21 @@ body {
     border-radius: 4px; 
 }
 
-
-.content {
-    margin-left: 230px; 
-    padding: 20px;
+.right-side {
+    display: flex;
+    flex-direction: column;
 }
 
-.search-container {
-    display: flex;
+.search-container { 
     justify-content: center;
     align-items: center;
     margin-top: 20px;
     margin-left: 350px;
-    width: 1000px; 
+    width: 100%; 
 }
 
 .search-input {
-    flex-grow: 1; 
+    width: 450px;
     padding: 10px 15px;
     font-size: 16px;
     color: #000;
@@ -75,4 +71,6 @@ body {
 .search-results {
     width: calc(100% - 250px); 
     margin-top: 10px; 
+    margin-left: 30px;
+    align-items: center;
 }

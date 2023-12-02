@@ -7,21 +7,25 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/search.css') }}">
 </head>
 <body>
-    <div class="search-container">
-        <input type="text" id="search-input" class="search-input" placeholder="Search for Artists, Songs, or Albums" autofocus>
-        <button id="search-button" class="search-button">Search</button>
-    </div>
-    <div id="search-results" class="search-results">
-    </div>
-
     <div class="sidebar">
         <div class="menu">
-            <p><a class="menu-item">Library</a></p>
             <p><a href="{{ url_for('playlist') }}" class="menu-item">Playlist</a></p>
             <p><a href="{{ url_for('search') }}" class="menu-item">Search</a></p>
-            <p><a class="menu-item">Account</a></p>
+            <p><a href="{{ url_for('my_account') }}" class="menu-item">Account</a></p>
         </div>
     </div>
+
+    <div class="right-side">
+        <div class="search-container">
+            <input type="text" id="search-input" class="search-input" placeholder="Search for Artists, Songs, or Albums" autofocus>
+            <button id="search-button" class="search-button">Search</button>
+        </div>
+    
+        <div id="search-results" class="search-results">
+            <p>This is where the search results go</p>
+        </div>
+    </div>
+
 
     <script>
         document.getElementById('search-button').addEventListener('click', function() {

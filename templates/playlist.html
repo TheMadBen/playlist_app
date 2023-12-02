@@ -9,10 +9,9 @@
 <body>
     <div class="sidebar">
         <div class="menu">
-            <p><a class="menu-item">Library</a></p>
             <p><a href="{{ url_for('playlist') }}" class="menu-item">Playlist</a></p>
             <p><a href="{{ url_for('search') }}" class="menu-item">Search</a></p>
-            <p><a class="menu-item">Account</a></p>
+            <p><a href="{{ url_for('my_account') }}" class="menu-item">Account</a></p>
         </div>
     </div>
     <div class="content">
@@ -21,7 +20,7 @@
             <h1>Playlist</h1>
         </div>
     </div>
-    <div class="song-list">
+    <div class="playlist-list">
         {% if playlist %}
             <div class="playlist">
                 <h2>{{ playlist[2] }}</h2> <!-- Displaying the playlist name -->

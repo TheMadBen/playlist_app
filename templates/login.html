@@ -7,16 +7,22 @@
     </head>
     <body>
         <div class='container'>
+            <h2 class='header'>
+                Login Page
+            </h2>
+
             <form action="/user-login" method="post">
-                <label>Enter Username:</label>
                 <input type='text' name='username' placeholder='Username' Required><br>
-                <label>Enter Password:</label>
                 <input type='text' name='password' placeholder='Password' Required><br>
                 <input type="submit" value="Login">
             </form>
 
+            <p class='login-error'>
+                {{ credential }}
+            </p>
+
             <p class='account-redirect'>
-                <a href="{{ url_for('account') }}">Create Account</a>
+                <a href="{{ url_for('create_account') }}">Create Account</a>
             </p>
             
         </div>

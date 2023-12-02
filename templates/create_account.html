@@ -3,16 +3,18 @@
     <head>
         <meta charset="UTF-8">
         <title>Create Account</title>
-        <link rel="stylesheet" type= "text/css" href= "{{ url_for('static', filename='styles/account.css') }}">
+        <link rel="stylesheet" type= "text/css" href= "{{ url_for('static', filename='styles/create_account.css') }}">
     </head>
     <body>
         <div class='container'>
-            <form action='/account-created' method="post">
-                <label>Enter Username:</label>
+            <h2 class='header'>
+                Create Account Page
+            </h2>
+
+            <form action='/create_account' method="post">
                 <input type='text' name='username' placeholder='Username' Required><br>
-                <label>Enter Password:</label>
                 <input type='text' name='password' placeholder='Password' Required><br>
-                <button type='submit'>Create</button>
+                <input type="submit" value="Create">
             </form>
         </div>
     </body>

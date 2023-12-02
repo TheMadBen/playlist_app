@@ -1,7 +1,17 @@
-div.container {
+body {
+    background-color: #2c3e50;
+    margin: 0px;
+    padding: 0px;
+}
+
+.header {
+    color: white;
+    padding: 40px;
+}
+
+.container {
     border-radius: 5px;
-    background-color: #f2f2f2;
-    padding: 20px;
+    height: 1000vh;
     text-align: center;
 }
 
@@ -18,14 +28,13 @@ input[type=text], select {
   
 /* Style the submit button */
 input[type=submit] {
-    width: 300px;
-    background-color: #04AA6D;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
+    width: 100px;
+    background-color: white;
+    color: black;
+    border: 1px;
     border-radius: 4px;
     cursor: pointer;
+    margin-top: 20px;
 }
 
 input[type=submit]:hover {

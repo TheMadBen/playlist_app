@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Account</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/my_account.css') }}">
+</head>
+<body>
+    <div class="sidebar">
+        <div class="menu">
+            <p><a href="{{ url_for('playlist') }}" class="menu-item">Playlist</a></p>
+            <p><a href="{{ url_for('search') }}" class="menu-item">Search</a></p>
+            <p><a href="{{ url_for('my_account') }}" class="menu-item">Account</a></p>
+        </div>
+
+        <div class='right-side'>
+            <p>
+                This is where user information will go such as username, password, and a logout option
+            </p>
+        </div>
+    </div>
+</body>
+</html>
