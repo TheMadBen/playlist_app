@@ -7,7 +7,8 @@ user = 'postgres'
 password = '1234'
 port = '5432'           # for Ben it's 5432, for Philip it's 5433
 database = 'phase2'     # may be different for you depending on what database you are using on your local mahcine
-
+                        # for me i had to create another database different from postgres which is default
+                        # then create all the tables and insert the data
 try:
     # Connect to an existing database
     connection = psycopg2.connect(user="postgres",
