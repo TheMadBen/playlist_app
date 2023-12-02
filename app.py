@@ -3,6 +3,7 @@ import psycopg2
 from psycopg2 import Error
 import random
 
+# change these values according to your local machine
 user = 'postgres'
 password = '1234'
 port = '5432'           # for Ben it's 5432, for Philip it's 5433
@@ -11,11 +12,11 @@ database = 'phase2'     # may be different for you depending on what database yo
                         # then create all the tables and insert the data
 try:
     # Connect to an existing database
-    connection = psycopg2.connect(user="postgres",
-                                  password="1234",
+    connection = psycopg2.connect(user=user,
+                                  password=password,
                                   host="localhost",
-                                  port="5432",
-                                  database="phase2")
+                                  port=port,
+                                  database=database)
 
     # Create a cursor to perform database operations
     cursor = connection.cursor()
@@ -39,11 +40,11 @@ finally:
 #make changes
 def get_db_connection():
     conn = psycopg2.connect(
-        user="postgres",
-        password="1234",
+        user=user,
+        password=password,
         host="localhost",
-        port="5432",
-        database="phase2"
+        port=port,
+        database=database
     )
     return conn
 
