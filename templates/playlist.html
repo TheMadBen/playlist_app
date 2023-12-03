@@ -14,28 +14,17 @@
             <p><a href="{{ url_for('my_account') }}" class="menu-item">Account</a></p>
         </div>
     </div>
-    <div class="content">
+    <div class="right-side">
         <div class="playlist-header">
-        <div class="playlist-details">
             <h1>Playlist</h1>
         </div>
-    </div>
-    <div class="playlist-list">
-        {% if playlist %}
-            <div class="playlist">
-                <h2>{{ playlist[2] }}</h2> <!-- Displaying the playlist name -->
-                <!-- More code here to display playlist songs if available -->
-            </div>
-        {% else %}
-            <p>No playlists available.</p>
-        {% endif %}
-    </div>
-    </div>
-    <div class="create-playlist">
         <form action="{{ url_for('playlist') }}" method="post">
-            <input type="text" name="playlist_name" placeholder="Enter Playlist Name" required>
-            <button type="submit">Create Playlist</button>
+            <input type="text" name="playlist_name" placeholder="Enter Playlist Name">
+            <input type="submit" value="Create Playlist"></input>
         </form>
-    </div>    
+        <div class="playlists">
+            <p>This is where all the playlists go</p>
+        </div>
+    </div>
 </body>
 </html>
