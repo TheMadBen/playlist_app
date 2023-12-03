@@ -68,12 +68,13 @@ def user_login():
                     (username, password))
         user = cur.fetchone()   # user is a tuple ie (0, 'user0', 'pass0')
         
-        cur.execute("SELECT playlist_name FROM playlist WHERE user_id = %s", (user[0],))
-        playlists = cur.fetchall()
         
-        cur.close()
-        conn.close()
         if user:
+            cur.execute("SELECT playlist_name FROM playlist WHERE user_id = %s", (user[0],))
+            playlists = cur.fetchall()
+            
+            cur.close()
+            conn.close()
             return render_template('playlist.html', playlists=playlists)
         else:
             credential='Invalid Credentials. Try Again'
