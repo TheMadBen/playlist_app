@@ -23,8 +23,33 @@
             <input type="submit" value="Create Playlist"></input>
         </form>
         <div class="playlists">
-            <p>This is where all the playlists go</p>
+            <h3>Playlists</h3>
+            <p class='playlist-items'>
+                <select id="playlistDropdown">
+                    <option selected disabled>Select Playlist</option>
+                    {% for playlist_name in playlists %}
+                        <option value="{{ playlist_name[0] }}">{{ playlist_name[0] }}</option>
+                    {% endfor %}
+                </select>
+                <button onclick="showSelectedPlaylist()">Show Songs</button>
+            </p>
+            <div id="songsContainer"></div>
         </div>
     </div>
+
+    <script>
+        function showSelectedPlaylist() {
+            var dropdown = document.getElementById("playlistDropdown");
+            var selectedPlaylist = dropdown.options[dropdown.selectedIndex].value;
+
+            //fetch and display songs for the selected playlist using AJAX
+            fetch(`/get_songs/${selectedPlaylist}`)
+                .then(response => response.json())
+                .then(data => {
+                    var songsContainer = document.getElementById("songsContainer");
+                    songsContainer.innerHTML = `<h3>Songs in ${selectedPlaylist}</h3><ul>${data.songs.map(song => `<li>${song}</li>`).join('')}</ul>`;
+                });
+        }
+    </script>
 </body>
 </html>

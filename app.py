@@ -2,13 +2,14 @@ from flask import Flask, request, render_template
 import psycopg2
 from psycopg2 import Error
 import random
+from flask import jsonify
 
 try:
     # Connect to an existing database
     connection = psycopg2.connect(user="postgres",
                                   password="1234",
                                   host="localhost",
-                                  port="5432",
+                                  port="5433",
                                   database="phase2")
 
     # Create a cursor to perform database operations
@@ -35,7 +36,7 @@ def get_db_connection():
         user="postgres",
         password="1234",
         host="localhost",
-        port="5432",        # for Ben it's 5432, for Philip it's 5433
+        port="5433",        # for Ben it's 5432, for Philip it's 5433
         database="phase2"   # may be different for you depending on what database you are using on your local mahcine
     )                       # for me i had to create another database different from postgres which is default
     return conn
@@ -105,22 +106,47 @@ def playlist():
     global user
     user_id = user[0]
     print(user_id)
-    # playlist_name = request.form['playlist_name']
 
-    # conn = get_db_connection()
-    # cur = conn.cursor()
+    conn = get_db_connection()
+    cur = conn.cursor()
 
-    # cur.execute("INSERT INTO playlist (user_id, playlist_name) VALUES (%s, %s) RETURNING playlist_name", (user_id, playlist_name))
-    # playlist_id = cur.fetchone()[0]
+    cur.execute("SELECT playlist_name FROM playlist WHERE user_id = %s", (user_id,))
+    playlists = cur.fetchall()
 
-    # cur.execute("SELECT * FROM playlist WHERE playlist_name = %s", (playlist_id,))
-    # new_playlist = cur.fetchone()
+    cur.close()
+    conn.close()
 
-    # conn.commit()
-    # cur.close()
-    # conn.close()
+    if request.method == 'POST':
+        playlist_name = request.form.get('playlist_name')
 
-    return render_template('playlist.html')
+        if playlist_name:
+            conn = get_db_connection()
+            cur = conn.cursor()
+
+            cur.execute("INSERT INTO playlist (user_id, playlist_name) VALUES (%s, %s) RETURNING playlist_name", (user_id, playlist_name))
+            playlist_id = cur.fetchone()[0]
+
+            conn.commit()
+            cur.close()
+            conn.close()
+
+            return render_template('playlist.html', playlist_name=playlist_name, playlists=playlists)
+
+    return render_template('playlist.html', playlists=playlists)
+
+# returns a JSON response using Flask
+@app.route('/get_songs/<playlist_name>')
+def get_songs(playlist_name):
+    conn = get_db_connection()
+    cur = conn.cursor()
+
+    cur.execute("SELECT song_name FROM song WHERE playlist_name = %s", (playlist_name,))
+    songs = cur.fetchall()
+
+    cur.close()
+    conn.close()
+
+    return jsonify({'songs': songs})
 
 
 @app.route('/search', methods=['GET', 'POST'])
