@@ -63,7 +63,8 @@ a:link, a:visited {
     display: inline-block;
 }
 
-.login-error {
+.login-msg {
     color: white;
     padding: 20px;
+    font-size: 18px;
 }

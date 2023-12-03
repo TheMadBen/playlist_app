@@ -86,3 +86,10 @@ input[type=submit]:hover {
 .header {
     color: #1DB954; 
 }
+
+.error {
+    color: white;
+    padding: 20px;
+    margin-left: 130px;
+    font-size: 18px;
+}
