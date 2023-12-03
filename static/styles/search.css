@@ -73,7 +73,7 @@ input[type=submit]:hover {
 }
 
 .song-list {
-    width: calc(100% - 250px); 
+    width: 100%; 
     margin-top: 10px; 
     margin-left: 50px;
     align-items: center;
@@ -81,10 +81,12 @@ input[type=submit]:hover {
 
 .song-items {
     font-size: 18px;
+    margin-left: 400px;
 }
 
 .header {
-    color: #1DB954; 
+    color: #1DB954;
+    margin-left: 400px;
 }
 
 .error {

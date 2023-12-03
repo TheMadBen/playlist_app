@@ -39,7 +39,8 @@ body {
 .right-side {
     display: flex;
     flex-direction: column;
-    margin-left: 15px;
+    margin-left: 350px;
+    align-items: center;
 }
 
 .playlist-header {

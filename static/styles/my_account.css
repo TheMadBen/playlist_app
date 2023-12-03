@@ -39,6 +39,8 @@ body {
 .right-side {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    margin-left: 550px;
 }
 
 .header {
@@ -59,7 +61,6 @@ body {
 
 .logout {
     margin-top: 150px;
-    margin-left: 50px;
     font-size: 18px;
 }
 
