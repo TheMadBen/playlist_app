@@ -77,9 +77,12 @@ input[type=submit]:hover {
 }
 
 .playlistDropdown {
-    width: 300px;
+    width: 500px;
     height: 40px;
     font-size: 16px;
+    padding-left: 10px;
+    color: #000;
+    border-radius: 4px;
 }
 
 .songButton {
