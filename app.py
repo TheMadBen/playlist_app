@@ -9,7 +9,7 @@ try:
     connection = psycopg2.connect(user="postgres",
                                   password="1234",
                                   host="localhost",
-                                  port="5433",
+                                  port="5432",
                                   database="phase2")
 
     # Create a cursor to perform database operations
@@ -36,7 +36,7 @@ def get_db_connection():
         user="postgres",
         password="1234",
         host="localhost",
-        port="5433",        # for Ben it's 5432, for Philip it's 5433
+        port="5432",        # for Ben it's 5432, for Philip it's 5433
         database="phase2"   # may be different for you depending on what database you are using on your local mahcine
     )                       # for me i had to create another database different from postgres which is default
     return conn
@@ -68,10 +68,13 @@ def user_login():
                     (username, password))
         user = cur.fetchone()   # user is a tuple ie (0, 'user0', 'pass0')
         
+        cur.execute("SELECT playlist_name FROM playlist WHERE user_id = %s", (user[0],))
+        playlists = cur.fetchall()
+        
         cur.close()
         conn.close()
         if user:
-            return render_template('playlist.html', user=user)
+            return render_template('playlist.html', playlists=playlists)
         else:
             credential='Invalid Credentials. Try Again'
             return render_template('login.html', credential=credential)     # this will display invalid/valid credentials on the same page instead of redirecting to a new page
@@ -105,7 +108,7 @@ def create_account():
 def playlist():
     global user
     user_id = user[0]
-    print(user_id)
+    # print(user_id)
 
     conn = get_db_connection()
     cur = conn.cursor()
@@ -131,8 +134,8 @@ def playlist():
             conn.close()
 
             return render_template('playlist.html', playlist_name=playlist_name, playlists=playlists)
-
-    return render_template('playlist.html', playlists=playlists)
+    else:
+        return render_template('playlist.html', playlists=playlists)
 
 # returns a JSON response using Flask
 @app.route('/get_songs/<playlist_name>')

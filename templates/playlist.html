@@ -23,15 +23,14 @@
             <input type="submit" value="Create Playlist"></input>
         </form>
         <div class="playlists">
-            <h3>Playlists</h3>
             <p class='playlist-items'>
-                <select id="playlistDropdown">
+                <select class='playlistDropdown' id="playlistDropdown">
                     <option selected disabled>Select Playlist</option>
                     {% for playlist_name in playlists %}
                         <option value="{{ playlist_name[0] }}">{{ playlist_name[0] }}</option>
                     {% endfor %}
                 </select>
-                <button onclick="showSelectedPlaylist()">Show Songs</button>
+                <button class='songButton' onclick="showSelectedPlaylist()">Show Songs</button>
             </p>
             <div id="songsContainer"></div>
         </div>
