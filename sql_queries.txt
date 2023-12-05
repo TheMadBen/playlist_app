@@ -1,0 +1,88 @@
+CREATE TABLE USERS (
+    user_id INT PRIMARY KEY,
+    username VARCHAR(255) NOT NULL,
+    password VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE PLAYLIST (
+    playlist_name VARCHAR(255) PRIMARY KEY,
+    user_id INT,
+    FOREIGN KEY (user_id) REFERENCES USERS(user_id)
+);
+        
+CREATE TABLE SONG (
+    song_id INT PRIMARY KEY,
+    song_name VARCHAR(255) NOT NULL,
+    num_listens INT,
+    album_id INT,
+    playlist_name VARCHAR(255),
+    FOREIGN KEY (playlist_name) REFERENCES PLAYLIST(playlist_name)
+);
+
+CREATE TABLE songs_list (
+    TrackName VARCHAR(255),
+    ArtistName VARCHAR(255),
+    Genre VARCHAR(255)
+);
+
+insert into users
+values 
+	(00,'user0','pass0'),
+	(01,'user1','pass1'),
+	(02,'user2','pass2'),
+	(03,'user3','pass3'),
+	(04,'user4','pass4'),
+	(05,'user5','pass5'),
+	(06,'user6','pass6'),
+	(07,'user7','pass7'),
+	(08,'user8','pass8'),
+	(09,'user9','pass9');
+
+insert into playlist
+values 
+	('playlist0',0),
+	('playlist1',0),
+	('playlist2',1),
+	('playlist3',2),
+	('playlist4',3),
+	('playlist5',4),
+	('playlist6',4),
+	('playlist7',5),
+	('playlist8',6),
+	('playlist9',7);
+	
+INSERT INTO song (song_id, song_name, num_listens, album_id, playlist_name)
+VALUES
+    (123, 'Sunset Serenade', 23345, 1223, 'playlist6'),
+    (456, 'Dancing in the Rain', 3452, 1230, 'playlist1'),
+    (789, 'Eternal Embrace', 45, 531, 'playlist2'),
+    (111, 'Electric Dreams', 7867, 785, 'playlist4'),
+    (112, 'Lost in the Melody', 766, 34, 'playlist5'),
+    (221, 'Whispers of the Wind', 890897, 969, 'playlist7'),
+    (4354, 'Midnight Serenity', 678678, 652, 'playlist3'),
+    (889, 'Ocean Lullaby', 4234, 976, 'playlist9'),
+    (665, 'City of Stars', 35431565, 58, 'playlist0'),
+    (90, 'adiant Memories', 5464, 3457, 'playlist8');
+	
+INSERT INTO songs_list
+values
+	('Senorita', 'Shawn Mendes', 'canadian pop'),
+	('China',	'Anuel AA',	'reggaeton flow'),
+	('boyfriend (with Social House)',	'Ariana Grande',	'dance pop'),
+	('Beautiful People (feat. Khalid)',	'Ed Sheeran',	'pop'),
+	('Goodbyes (Feat. Young Thug)',	'Post Malone',	'dfw rap'),
+	('I Dont Care (with Justin Bieber)',	'Ed Sheeran',	'pop'),
+	('Ransom',	'Lil Tecca',	'trap music'),
+	('How Do You Sleep?',	'Sam Smith',	'pop'),
+	('Old Town Road - Remix',	'Lil Nas X',	'country rap'),
+	('bad guy',	'Billie Eilish',	'electropop'),
+	('Callaita',	'Bad Bunny',	'reggaeton'),
+	('Loco Contigo (feat. J. Balvin & Tyga)',	'DJ Snake',	'dance pop'),
+	('Someone You Loved',	'Lewis Capaldi',	'pop'),
+	('Otro Trago - Remix',	'Sech',	'panamanian pop'),
+	('Money In The Grave (Drake ft. Rick Ross)',	'Drake',	'canadian hip hop'),
+	('No Guidance (feat. Drake)',	'Chris Brown',	'dance pop'),
+	('LA CANCION',	'J Balvin',	'latin'),
+	('Sunflower - Spider-Man: Into the Spider-Verse',	'Post Malone',	'dfw rap'),
+	('Lalala',	'Y2K',	'canadian hip hop'),
+	('Truth Hurts',	'Lizzo',	'escape room');
