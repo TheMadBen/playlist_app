@@ -1,6 +1,13 @@
 # Playlist Application
 pip install flask psycopg2<br>
-Must be able to establish a local connection with PostgreSQL to run the code<br><br>
+Must be able to establish a local connection with PostgreSQL to run the code<br>
+[Download PostgreSQL here]([https://link-url-here.org](https://www.postgresql.org/download/))<br>
+Make sure the version 13 or greater and have pgAdmin4 installed as well.<br>
+When you setup pgAdmin4, keep the user as postgres and port 5432 which should be default. Make the password for postgres user 1234 for the sake of not having to change the code.<br>
+Once that is done, create a new database called 'phase2' by right clicking on the server name which should be PostgreSQL [version number]<br>
+Make sure that you are on the phase2 database and not postgre database that's create by default. You are creating a new database so you don't have to change the code.<br>
+Select the Query Tool located near the top left between 'Object Explorer' and 'Dashboard'.<br>
+Copy and paste the sql found [here]()
 
 Built using Python, Flask, HTML/CSS, PostgreSQL<br>
 Flask provides the ability to locally host our web application using HTML/CSS and Python<br>
